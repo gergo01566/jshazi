@@ -1,0 +1,182 @@
+- login.html
+	- login form
+	- bejelentkezés
+	- bejelentkezés adminként
+- drinks.html
+	- kilistázza az italokat
+	- form
+	- kosárba rak gomb
+- sweets.html
+	- kilistázza az italokat
+	- form
+	- kosárba rak gomb
+- alcohols.html
+	- kilistázza az italokat
+	- form
+	- kosárba rak gomb
+- shoppingcart.html
+	- kilistázza a kosár tartalmát
+	- kosár ürítése
+	- rendelés leadása
+- orders.html
+	- kilistázza a korábbi rendeléseket
+- adminpage.html
+	- rendelések 
+		- listázása
+		- megtekintése
+		- törlése
+	- termékek 
+		- listázása
+		- törlése
+		- edit
+		- new
+	- felhasználok 
+		- listázása
+		- törlése
+		- new
+
+Middlewares
+
+renderMW.js
+requireOptions.js
+
+middlewares/auth/
+checkPassMW.js
+authMW.js
+logoutMW.js
+
+middlewares/shoppingcart/
+getCartMW.js
+deleteCartMW.js
+saveCartMW.js
+addToCartMW.js
+
+middlewares/order/
+getOrderMW.js
+deleteOrderMW.js
+getOrderDetailsMW.js
+getAllOrdersMW.js
+
+middlewares/products/
+getProductsMW.js
+saveProductMW.js
+deleteProductMW.js
+getDrinksMW.js
+getSweetsMW.js
+getAlcholosMW.js
+
+middlewares/user/
+getUserMW.js
+deleteUserMW.js
+saveUserMW.js
+
+
+Routing
+
+GET, POST /login
+	checkPassMW
+	renderMW(index.html)
+
+GET /drinks
+	authMW
+	getDrinksMW
+	renderMW(drinks.html)
+	logoutMW
+
+Get /drinks/add/:productID
+	authMW
+	addToCartMW
+
+GET /sweets
+	authMW
+	getSweetsMW
+	renderMW(sweets.html)
+	logoutMW
+
+Get /sweets/add/:productID
+	authMW
+	addToCartMW
+
+GET /alcohols
+	authMW
+	getAlcoholsMW
+	renderMW(alcohols.html)
+	logoutMW
+
+Get /alcohols/add/:productID
+	authMW
+	addToCartMW
+
+GET /shoppingcart
+	authMW
+	getCartMW
+	renderMW(shoppingcart.html)
+	logoutMW
+
+GET /shoppingcart/delete
+	authMW
+	getCartMW
+	deleteCartMW
+
+GET /shoppingcart/order
+	authMW
+	getCartMW
+	saveCartMW
+
+GET, POST /orders/:userID
+	authMW
+	getOrderMW
+	renderMW(orders.html)
+	logoutMW
+
+GET /adminpage
+	authMW
+	getAllOrdersMW
+	getProductsMW
+	getUsersMW
+	renderMW(adminpage.html)
+	logoutMW
+
+GET /adminpage/orders/view/:orderID
+	authMW
+	getOrderDetailsMW
+	renderMW(vieworder.html (new))
+	logoutMW
+
+GET /adminpage/orders/delete/:orderID
+	authMW
+	getAllOrdersMW
+	deleteOrderMW
+
+GET, POST /adminpage/products/edit/:productID
+	authMW
+	getProductsMW
+	saveProductMW
+	renderMW(editproduct.html (new))
+	logoutMW
+
+GET /adminpage/products/delete/:productID
+	authMW
+	getProductsMW
+	deleteProductMW
+
+GET, POST /adminpage/products/new/:productID
+	authMW
+	getProductsMW
+	saveProductMW
+	renderMW (newproduct.html (new))
+	logoutMW
+
+GET /adminpage/users/delete/:userID
+	authMW
+	getUsersMW
+	deleteUserMW
+	logoutMW
+
+GET, POST /adminpage/users/new/:userID
+	authMW
+	getUsersMW
+	saveUserMW
+	renderMW(newuser.html (new))
+	logoutMW
+
