@@ -103,7 +103,7 @@ module.exports = function (app) {
     app.get('/adminpage/orders/view/:orderID',
         authMW(objRepo),
         getOrderDetailsMW(objRepo),
-        new	renderMW(objRepo, 'vieworder'));
+        renderMW(objRepo, 'vieworder'));
 
     app.get('/adminpage/orders/delete/:orderID',
         authMW(objRepo),
@@ -140,6 +140,6 @@ module.exports = function (app) {
         getUserMW(objRepo),
         saveUserMW(objRepo),
         logoutMW(objRepo),
-        new	renderMW(objRepo, 'newuser'));
+        renderMW(objRepo, 'newuser'));
 
 };
