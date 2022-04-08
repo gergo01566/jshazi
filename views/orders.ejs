@@ -1,0 +1,28 @@
+<%- include('userheader', {categoryname: 'Rendelések'}); %>
+
+<h1 class="text-center">Korábbi rendelések</h1>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+        <thead>
+        <tr>
+            <th scope="col">Rendelés leadásának dátuma</th>
+            <th scope="col">Fizetendő összeg</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">2022.02.14</th>
+            <td>56.500</td>
+        </tr>
+        <tr>
+            <th scope="row">2022.02.21</th>
+            <td>79.000</td>
+        </tr>
+        <tr>
+            <th scope="row">2022.02.27</th>
+            <td>86.700</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<%- include ('footer') -%>

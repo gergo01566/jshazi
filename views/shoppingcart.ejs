@@ -1,0 +1,43 @@
+<%- include('userheader', {categoryname: 'Kosár'}); %>
+
+<h1 class="text-center">Kosár tartalma</h1>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+        <thead>
+        <tr>
+            <th scope="col">Termék neve</th>
+            <th scope="col">Kagetória</th>
+            <th scope="col">Darabszám</th>
+            <th scope="col">Ár</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">Pepsi 1l</th>
+            <td>Italok</td>
+            <td>20</td>
+            <td>11.000</td>
+        </tr>
+        <tr>
+            <th scope="row">Csokis keksz</th>
+            <td>Édességek</td>
+            <td>20</td>
+            <td>5.000</td>
+        </tr>
+        <tr>
+            <th scope="row">Pepsi 1,5l</th>
+            <td>Italok</td>
+            <td>20</td>
+            <td>14.000</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="d-flex">
+    <div class="p-2">Összesen:</div>
+    <label for="language"></label><input type="text" id="language" name="language" value="30.000HUF" readonly>
+    <button type="button" class="btn btn-primary">Rendelés leadása</button>
+    <button type="button" class="btn btn-primary">Kosár tartalmának törlése</button>
+</div>
+<%- include ('footer') -%>
