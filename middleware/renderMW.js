@@ -4,8 +4,9 @@
 
 const requireOption = require('../middleware/requireOption');
 
-module.exports = function (objectrepository) {
-    return function (req, res, next) {
-        next();
+module.exports = function (objectrepository, viewName) {
+    return function (req, res) {
+        console.log(viewName);
+        res.render(viewName, res.locals);
     };
 };

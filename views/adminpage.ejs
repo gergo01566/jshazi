@@ -12,7 +12,6 @@
 <body>
 
 <%- include ('adminmenu') -%>
-
 <h1 class="text-center">Rendelések</h1>
 <div class="table-wrapper-scroll-y my-custom-scrollbar">
     <table class="table table-bordered table-striped mb-0">
@@ -28,7 +27,7 @@
         <tr>
             <th scope="row">laci</th>
             <td>2022.01.18</td>
-            <td><a href="vieworder.html"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+            <td><a href="vieworder"><span class="glyphicon glyphicon-eye-open"></span></a></td>
             <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
         <tr>
@@ -49,27 +48,27 @@
             <th scope="col">Termék neve</th>
             <th scope="col">Kategória</th>
             <th scope="col">Ár</th>
+            <th scope="col">Darabszám</th>
+            <th scope="col">Szerkesztés</th>
             <th scope="col">Eltávolítás</th>
         </tr>
         </thead>
         <tbody>
+        <% for (let i = 0; i< products.length; i++){ const product = products[i];  %>
         <tr>
-            <th scope="row">Pepsi 1l</th>
-            <td>Italok</td>
-            <td>550</td>
-            <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+            <th scope="row"><%= product.name%></th>
+            <td><%= product.enum%></td>
+            <td><%= product.price%></td>
+            <td><%= product.quantity%></td>
+            <td><a href="/adminpage/products/new/<%= product.id%>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+            <td><a href="/adminpage/products/delete/<%= product.id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
-        <tr>
-            <th scope="row">Csokis keksz</th>
-            <td>Édességek</td>
-            <td>300</td>
-            <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
-        </tr>
+        <% } %>>
         </tbody>
     </table>
 </div>
 
-<a class="btn btn-link" href="newproduct.html">Új termék hozzáadása</a>
+<a class="btn btn-link" href="/adminpage/products/new">Új termék hozzáadása</a>
 
 <h1 class="text-center">Felhasználók listája</h1>
 <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -82,20 +81,17 @@
         </tr>
         </thead>
         <tbody>
+        <% for (let i = 0; i< users.length; i++){ const u = users[i]; %>
         <tr>
-            <th scope="row">laci1</th>
-            <td>123xyz456</td>
-            <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+            <th scope="row"><%= u.username %></th>
+            <td><%= u.password %></td>
+            <td><a href="/adminpage/users/delete/:<%= u._id %>"><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
-        <tr>
-            <th scope="row">erzsi</th>
-            <td>456xyz123</td>
-            <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
-        </tr>
+        <% } %>>
         </tbody>
     </table>
 </div>
 
-<a class="btn btn-link" href="newuser.html">Új felhasználó hozzáadása</a>
+<a class="btn btn-link" href="/adminpage/users/new/">Új felhasználó hozzáadása</a>
 
 <%- include ('footer') -%>

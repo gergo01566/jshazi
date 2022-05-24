@@ -15,6 +15,7 @@ const getOrderDetailsMW = require('../middleware/order/getOrderDetailsMW');
 const getAllOrdersMW = require('../middleware/order/getAllOrdersMW');
 
 const getProductsMW = require('../middleware/products/getProductsMW');
+const getProductMW = require('../middleware/products/getProductMW');
 const saveProductMW = require('../middleware/products/saveProductMW');
 const deleteProductMW = require('../middleware/products/deleteProductMW');
 const getDrinksMW = require('../middleware/products/getDrinksMW');
@@ -36,7 +37,7 @@ module.exports = function (app) {
 
     app.get('/drinks',
         authMW(objRepo),
-        getDrinksMW(objRepo),
+        getProductsMW(objRepo),
         logoutMW(objRepo),
         renderMW(objRepo, 'drinks'));
 
@@ -46,7 +47,7 @@ module.exports = function (app) {
 
     app.get('/sweets',
         authMW(objRepo),
-        getSweetsMW(objRepo),
+        getProductsMW(objRepo),
         logoutMW(objRepo),
         renderMW(objRepo, 'sweets'));
 
@@ -56,7 +57,7 @@ module.exports = function (app) {
 
     app.get('/alcohols',
         authMW(objRepo),
-        getAlcholosMW(objRepo),
+        getProductsMW(objRepo),
         logoutMW(objRepo),
         renderMW(objRepo, 'alcohols'));
 
@@ -112,7 +113,7 @@ module.exports = function (app) {
 
     app.use('/adminpage/products/edit/:productID',
         authMW(objRepo),
-        getProductsMW(objRepo),
+        getProductMW(objRepo),
         saveProductMW(objRepo),
         logoutMW(objRepo),
         renderMW(objRepo, 'editproduct'));
@@ -122,9 +123,9 @@ module.exports = function (app) {
         getProductsMW(objRepo),
         deleteProductMW(objRepo));
 
-    app.use('/adminpage/products/new/:productID',
+    app.use('/adminpage/products/new',
         authMW(objRepo),
-        getProductsMW(objRepo),
+        getProductMW(objRepo),
         saveProductMW(objRepo),
         logoutMW(objRepo),
         renderMW (objRepo, 'newproduct'));
