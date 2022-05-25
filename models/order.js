@@ -3,7 +3,10 @@ const Schema = require('mongoose').Schema;
 const db = require('../config/db');
 
 const Order = db.model('Order', {
-    date: Schema.Types.Date,
+    date: {
+        type: Date,
+        default: Date.now
+    },
     products: {
         type: Schema.Types.ObjectId,
         ref: 'Product'

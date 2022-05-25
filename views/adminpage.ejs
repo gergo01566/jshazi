@@ -57,11 +57,12 @@
         <% for (let i = 0; i< products.length; i++){ const product = products[i];  %>
         <tr>
             <th scope="row"><%= product.name%></th>
-            <td><%= product.enum%></td>
+            <td><%= product.category%></td>
             <td><%= product.price%></td>
             <td><%= product.quantity%></td>
-            <td><a href="/adminpage/products/new/<%= product.id%>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-            <td><a href="/adminpage/products/delete/<%= product.id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+            <td><%= product._id%></td>
+            <td><a href="/adminpage/products/edit/<%= product.id%>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+            <td><a href="/adminpage/products/delete/<%= product._id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
         <% } %>>
         </tbody>
@@ -85,7 +86,7 @@
         <tr>
             <th scope="row"><%= u.username %></th>
             <td><%= u.password %></td>
-            <td><a href="/adminpage/users/delete/:<%= u._id %>"><span class="glyphicon glyphicon-trash"></span></a></td>
+            <td><a href="/adminpage/users/delete/<%= u._id %>"><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
         <% } %>>
         </tbody>

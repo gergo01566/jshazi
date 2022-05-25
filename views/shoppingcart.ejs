@@ -12,24 +12,15 @@
         </tr>
         </thead>
         <tbody>
+        <% for (let i = 0; i< shoppingcart.length; i++){ const product = shoppingcart[i];  %>
         <tr>
-            <th scope="row">Pepsi 1l</th>
-            <td>Italok</td>
-            <td>20</td>
-            <td>11.000</td>
+            <th scope="row"><%= product.name%></th>
+            <td><%= product.category%></td>
+            <td><%= product.price%></td>
+            <td><%= product.quantity%></td>
+            <td><%= product._id%></td>
         </tr>
-        <tr>
-            <th scope="row">Csokis keksz</th>
-            <td>Édességek</td>
-            <td>20</td>
-            <td>5.000</td>
-        </tr>
-        <tr>
-            <th scope="row">Pepsi 1,5l</th>
-            <td>Italok</td>
-            <td>20</td>
-            <td>14.000</td>
-        </tr>
+        <% } %>>
         </tbody>
     </table>
 </div>

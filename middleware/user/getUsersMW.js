@@ -1,17 +1,17 @@
 /**
- * Admin számára kilistázza az összes terméket kategóriától függetlenül
+ * Admin számára listázza a felhasználókat
  */
 
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
-    const ProductModel = objectrepository.ProductModel;
+    const UserModel = objectrepository.UserModel;
     return  (req, res, next) => {
-        ProductModel.find({}, (err,product) =>{
+        UserModel.find({}, (err,user) =>{
             if(err){
                 return next(err);
             }
-            res.locals.products = product;
+            res.locals.users = user;
             return next();
         })
     };

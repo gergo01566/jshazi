@@ -12,8 +12,7 @@
 <body>
 
 <%- include ('adminmenu') -%>
-
-<%= JSON.stringify(products)%>
+<h5><%= (typeof products === 'undefined') ? 'Új termék létrehozása' : 'Termék módosítása'%></h5>
 <!-- enctype=multipart/form-data"-->
 <form method="POST">
 <div class="form-group">
@@ -22,16 +21,26 @@
 </div>
 <div class="form-group">
   <label for="formGroupUsernameInputInput" class="form-label">Kategória</label>
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Válassz kategóriát!
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Italok</a>
-      <a class="dropdown-item" href="#">Édességek</a>
-      <a class="dropdown-item" href="#">Alkohol</a>
-    </div>
-  </div>
+  <div>
+    <form id="user-form">
+      <div id="app">
+        <div>
+          <select name="category" id="condition">
+            <option value  ="" ></option>
+            <% if (typeof products !== 'undefined'){%>
+
+            <option <%if(products.category =='Italok' ){%> selected <%}%>>Italok</option>
+            <option <%if(products.category =='Alkohol'){%> selected <%}%>>Alkohol</option>
+            <option <%if(products.category =='Édességek'){%> selected <%}%>>Édességek</option>
+            <% } else {%>
+            <option >Italok</option>
+            <option >Alkohol</option>
+            <option >Édességek</option>
+            <% } %>
+          </select>
+        </div>
+      </div>
+    </form>
 </div>
 <div class="form-group">
   <label for="formGroupPasswordUnput" class="form-label">Darabszám</label>
@@ -43,7 +52,8 @@
 </div>
 <div class="col-md-12 ">
   <input type="submit" class="btn btn-primary d-block" value="Mentés" />
-  <a class="btn btn-primary d-block" href="/adminpage">Mégsem</a>
+  <a class="btn btn-primary d-block" href="/adminpage">Vissza</a>
+</div>
 </div>
 </form>
 <%- include ('footer') -%>

@@ -1,3 +1,13 @@
+const db = require('./config/db');
+const UserModel = require('./models/user');
+const ProductModel = require('./models/product');
+const OrderModel = require('./models/order');
+
+const newUser = new UserModel();
+newUser.id = 1172;
+newUser.username = 'pityu';
+newUser.password = '123ds456';
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');

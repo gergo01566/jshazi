@@ -5,7 +5,16 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
-    return function (req, res, next) {
-        next();
+    return  (req, res, next) => {
+        if(typeof res.locals.products === 'undefined'){
+            return next();
+        }
+
+        return res.locals.products.remove(err => {
+            if(err){
+                return next(err);
+            }
+            return res.redirect('/adminpage');
+        })
     };
 };

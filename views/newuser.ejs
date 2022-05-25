@@ -12,17 +12,18 @@
 <body>
 
 <%- include ('adminmenu') -%>
-
+<form method="POST">
 <div class="form-group">
     <label for="formGroupUsernameInputInput" class="form-label">Felhasználónév</label>
-    <input type="text" class="form-control" id="formGroupUsernameInputInput" placeholder="">
+    <input type="text" class="form-control" id="formGroupUsernameInputInput" placeholder="" name="username">
 </div>
 <div class="form-group">
     <label for="formGroupPasswordUnput" class="form-label">Jelszó</label>
-    <input type="text" class="form-control" id="formGroupPasswordUnput" placeholder="">
+    <input type="text" class="form-control" id="formGroupPasswordUnput" placeholder="" name="password">
 </div>
 <div class="col-md-12 text-center">
-    <a class="btn btn-link" href="adminpage.ejs">Mentés</a>
+    <input type="submit" class="btn btn-primary d-block" value="Mentés" />
+    <a class="btn btn-primary d-block" href="/adminpage">Vissza</a>
 </div>
-
+</form>
 <%- include ('footer') -%>

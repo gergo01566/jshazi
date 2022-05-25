@@ -66,7 +66,7 @@ getSweetsMW.js
 getAlcholosMW.js
 
 middlewares/user/
-getUserMW.js
+getUsersMW.js
 deleteUserMW.js
 saveUserMW.js
 
