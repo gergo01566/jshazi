@@ -3,6 +3,7 @@ const renderMW = require('../middleware/renderMW');
 const checkPassMW = require('../middleware/auth/checkPassMW');
 const authMW = require('../middleware/auth/authMW');
 const logoutMW = require('../middleware/auth/logoutMW');
+const inverseAuthMW = require('../middleware/auth/inverseAuthMW');
 
 const getCartMW = require('../middleware/shoppingcart/getCartMW');
 const deleteCartMW = require('../middleware/shoppingcart/deleteCartMW');
@@ -30,15 +31,19 @@ module.exports = function (app) {
     const objRepo = {};
 
     app.use('/login',
+        inverseAuthMW(objRepo),
         checkPassMW(objRepo),
         renderMW(objRepo, 'index'));
+
+    app.get('/logout',
+        authMW(objRepo),
+        logoutMW(objRepo));
 
     /* Products routes */
 
     app.get('/drinks',
         authMW(objRepo),
         getProductsMW(objRepo),
-        logoutMW(objRepo),
         renderMW(objRepo, 'drinks'));
 
     app.use('/drinks/add/:productid',
@@ -48,7 +53,6 @@ module.exports = function (app) {
     app.get('/sweets',
         authMW(objRepo),
         getProductsMW(objRepo),
-        logoutMW(objRepo),
         renderMW(objRepo, 'sweets'));
 
     app.use('/sweets/add/:productid',
@@ -58,7 +62,6 @@ module.exports = function (app) {
     app.get('/alcohols',
         authMW(objRepo),
         getProductsMW(objRepo),
-        logoutMW(objRepo),
         renderMW(objRepo, 'alcohols'));
 
     app.use('/alcohols/add/:productid',
@@ -70,7 +73,6 @@ module.exports = function (app) {
     app.get('/shoppingcart',
         authMW(objRepo),
         getCartMW(objRepo),
-        logoutMW(objRepo),
         renderMW(objRepo, 'shoppingcart'));
 
     app.use('/shoppingcart/delete',
@@ -88,7 +90,6 @@ module.exports = function (app) {
     app.get('/orders/:userID',
         authMW(objRepo),
         getOrderMW(objRepo),
-        logoutMW(objRepo),
         renderMW(objRepo, 'orders'));
 
     /* Admin routes */
@@ -98,7 +99,6 @@ module.exports = function (app) {
         getAllOrdersMW(objRepo),
         getProductsMW(objRepo),
         getUserMW(objRepo),
-        logoutMW(objRepo),
         renderMW(objRepo, 'adminpage'));
 
     app.get('/adminpage/orders/view/:orderID',
@@ -115,7 +115,6 @@ module.exports = function (app) {
         authMW(objRepo),
         getProductMW(objRepo),
         saveProductMW(objRepo),
-        logoutMW(objRepo),
         renderMW(objRepo, 'editproduct'));
 
     app.get('/adminpage/products/delete/:productID',
@@ -127,20 +126,17 @@ module.exports = function (app) {
         authMW(objRepo),
         getProductMW(objRepo),
         saveProductMW(objRepo),
-        logoutMW(objRepo),
         renderMW (objRepo, 'newproduct'));
 
     app.get('/adminpage/users/delete/:userID',
         authMW(objRepo),
         getUserMW(objRepo),
-        deleteUserMW(objRepo),
-        logoutMW(objRepo));
+        deleteUserMW(objRepo));
 
     app.use('/adminpage/users/new/:userID',
         authMW(objRepo),
         getUserMW(objRepo),
         saveUserMW(objRepo),
-        logoutMW(objRepo),
         renderMW(objRepo, 'newuser'));
 
 };

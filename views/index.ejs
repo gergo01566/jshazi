@@ -2,18 +2,17 @@
 
 <form method="POST">
 <% if (typeof error !== 'undefined'){ %>
-    <h2><%=error%>></h2><%}%>
+    <h2><%=error%></h2><%}%>
 <div class="form-group">
     <label for="formGroupUsernameInputInput" class="form-label">Felhasználónév</label>
     <input type="username" class="form-control" id="username" placeholder="Add meg a felhasználóneved!" name="username">
 </div>
 <div class="form-group">
     <label for="formGroupPasswordUnput" class="form-label">Jelszó</label>
-    <input type="password" class="form-control" id="password" placeholder="Add meg a jelszavad!" name="password">
+    <input type="password" class="form-control" id="password" placeholder="****" name="password">
 </div>
 <div class="col-md-12 text-center">
-    <input type="submit" class="btn btn-primary d-block" value = "Bejelentkezés" />
-    <a class="btn btn-link" href="adminpage">Bejelentkezés adminisztrátorként</a>
+    <input type="submit" class="btn btn-primary" value="Bejelentkezés"/>    <a class="btn btn-link" href="adminpage">Bejelentkezés adminisztrátorként</a>
 </div>
 </form>
 <%- include ('footer') -%>
